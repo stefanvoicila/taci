@@ -7,6 +7,15 @@ const app = express();
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/taci'));
 
+app.use((req, res, next) => {
+  if(req.secure){
+    next();
+  }
+  else {
+    res.redirect(301, 'https://' + req.headers.host + req.url);
+  }
+})
+
 app.get('/*', function(req,res) {
 
 res.sendFile(path.join(__dirname+'/dist/taci/index.html'));
