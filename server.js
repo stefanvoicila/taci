@@ -12,7 +12,7 @@ app.use((req, res, next) => {
     next();
   }
   else {
-    res.redirect(301, 'https://' + req.headers.host + req.url);
+    res.redirect(301, 'https://www.sursa.eu');
   }
 })
 
